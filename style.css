@@ -108,9 +108,10 @@ body {
   flex-wrap: wrap;
 }
 
-.categoria-card img {
-  width: 500px;
-  height: 500px;
+.categoria-card img,
+.categoria-card video {
+  max-width: 100%;
+  height: auto;
   border-radius: 10px;
   object-fit: cover;
   box-shadow: 0 0 10px #fff1;
@@ -160,50 +161,48 @@ body {
   color: rgb(255, 0, 0);
 }
 
-/* PLAYLIST */
+/* PLAYLIST FIXA NO RODAPÉ */
 .playlist-flutuante {
   position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 10px 0 0 10px;
-  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  z-index: 1000;
-  width: 220px;
-  text-align: center;
-}
-
-.playlist-flutuante h3 {
-  font-size: 14px;
-  margin-bottom: 5px;
-  color: #333;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 10000;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .playlist-flutuante audio {
-  width: 100%;
-  margin-bottom: 8px;
+  width: 150px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  outline: none;
 }
 
-.botoes-musica {
-  display: flex;
-  justify-content: space-around;
+.playlist-flutuante audio:hover {
+  opacity: 1;
 }
 
 .botoes-musica button {
-  background-color: #ff0000;
+  background: transparent;
   border: none;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
+  color: #eee;
+  font-size: 1.5rem;
   cursor: pointer;
-  font-size: 14px;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+  padding: 5px;
 }
 
 .botoes-musica button:hover {
-  background-color: #ff0000;
+  opacity: 1;
 }
+
 /* ANIMAÇÃO */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -215,22 +214,12 @@ body {
   .categoria-card {
     flex-direction: column;
     align-items: center;
+    max-width: 100%;
   }
 
-  .categoria-card img {
-    border-radius: 15px 15px 0 0;
-    width: 100%;
-    height: auto;
-  }
-
-  .categoria-descricao {
-    text-align: center;
-  }
-
-  .playlist {
-    position: static;
-    width: 100%;
-    margin-top: 30px;
+  .categoria-card img,
+  .categoria-card video {
+    max-height: 300px;
   }
 
   .contador {
@@ -242,88 +231,24 @@ body {
     gap: 20px;
   }
 
-  /* NOVO ESTILO DE SETAS NAS LATERAIS */
-  .setas-navegacao {
-    position: relative;
-    max-width: 800px;
-    margin: 30px auto 0 auto;
-  }
-
-  .seta {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.07);
-    border: none;
-    color: #fff;
-    font-size: 2rem;
-    padding: 15px 20px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background 0.3s ease;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    z-index: 5;
-  }
-
-  .seta:hover {
-    background-color: rgba(255, 0, 0, 0.15);
-  }
-  
-  .seta.esquerda {
-    left: -20px;
-  }
-
-  .seta.direita {
-    right: -20px;
-  }
-
-  .seta {
-    font-size: 1.5rem;
-    padding: 10px 14px;
-  }
-}
-/* Estilos mobile adicionais */
-@media (max-width: 768px) {
-  .hero .titulo {
-    font-size: 2em;
-  }
-
-  .contador h2,
-  #timer {
-    font-size: 1em;
-  }
-
   .botoes-categorias button {
     padding: 8px 16px;
     font-size: 0.9em;
   }
 
-  .categoria-card {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .categoria-card img,
-  .categoria-card video {
-    width: 100%;
-    height: auto;
-    max-height: 300px;
-  }
-
   .playlist-flutuante {
-    width: 100%;
-    right: 0;
-    bottom: 0;
-    top: auto;
-    flex-direction: row;
-    justify-content: center;
-    gap: 5px;
     padding: 10px;
-    z-index: 9999;
+  }
+}
+
+/* Estilos mobile adicionais */
+@media (max-width: 480px) {
+  .playlist-flutuante audio {
+    width: 120px;
   }
 
-  .playlist-flutuante audio {
-    width: 90px;
-    height: 40px;
+  .botoes-musica button {
+    font-size: 1.2rem;
+    padding: 3px;
   }
 }

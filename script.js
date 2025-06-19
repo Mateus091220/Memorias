@@ -59,7 +59,7 @@ const fotos = {
       texto: "Estávamos decididos a buscar a resposta do Senhor para entender se Ele aprovaria ou não o nosso relacionamento. A meta estava definida: se a resposta fosse não ou não houvesse resposta alguma, não iríamos nos relacionar. A única opção era o sim",
     },
     {
-      tipo: "Video",
+      tipo: "video",
       src: "assets/video/v2.mp4",
       titulo:"O dia da Resposta",
       texto: "Estávamos no último dia do propósito, 21/06/2024. Até aquele momento, apenas eu havia recebido as confirmações. Mas, em conjunto, entendíamos que a confirmação deveria vir de ambos. Com corações aflitos, chegamos à vigília, aguardando, então, algum sinal do céu. O pregador da noite iniciou a mensagem de um modo um tanto quanto diferente: caricato e divertido. O relógio bateu meia-noite, e agora? Foi aí que o de repente de Deus CHEGOU. Você presenciou tudo e recebeu a tão aguardada confirmação. Ali iniciava o começo da nossa história."
@@ -70,14 +70,14 @@ const fotos = {
       titulo:"O JARDIM",
       texto: "Não temos uma foto para representar o momento no Jardim, mas foi ali que tivemos nossa primeira conversa como um casal. Foi ali que você me confirmou que iríamos nos relacionar. Lembro que meu coração estava cheio de expectativa e medo, afinal, você não havia me contado nada no dia anterior. Combinamos de conversar no jardim do seu prédio. A conversa começou com o coração acelerado, aflito e apreensivo. Alguns minutos depois, veio a resposta do sim, e um alívio pairou sobre o meu coração. Deu certo! 😍"
     },
-      {
-        tipo: "imagem",
+    {
+      tipo: "imagem",
       src: "assets/img/casasogro.jpg",
       titulo:"A benção dos Pais",
       texto: "Havia mais uma coisa a ser feita: era hora de anunciar aos seus pais o nosso relacionamento. Era um domingo, dia 23/06/2024, por volta das 12h. Eu estava bem nervoso, afinal, você é filha de pastores, e novamente fui surpreendido positivamente. Não esperava uma recepção tão incrível. Fui abraçado, acolhido e cuidado pela sua família."
-      },
-      {
-      tipo: "Video",
+    },
+    {
+      tipo: "video",
       src: "assets/video/hoje.mp4",
       titulo:"Nós Hoje",
       texto: "Vivemos muitas coisas desde o dia 22/06/2024. Comecei a ver as coisas pela sua ótica, tive experiências que nunca imaginei viver, conheci novos lugares, provei comidas diferentes e conheci uma nova família que, desde o primeiro dia, tem torcido por nós. Choramos juntos, rimos, dançamos, fofocamos bastante (rsrsrs). Descobrimos os gostos um do outro. Creio que viveremos coisas ainda mais incríveis nos próximos anos, te tendo não apenas como minha namorada, mas como minha esposa. Te amo!"
@@ -112,14 +112,25 @@ function atualizarFoto(categoria) {
   const titulo = document.getElementById(`titulo-${categoria}`);
   const texto = document.getElementById(`descricao-${categoria}`);
 
-  if (dados.tipo === "imagem") {
-    img.src = dados.src;
-    img.style.display = "block";
+  if (dados.tipo.toLowerCase() === "imagem") {
+    if (dados.src) {
+      img.src = dados.src;
+      img.style.display = "block";
+    } else {
+      img.style.display = "none";
+    }
     video.style.display = "none";
-  } else {
-    video.src = dados.src;
+    video.pause();
+    video.src = "";
+  } else if (dados.tipo.toLowerCase() === "video") {
+    video.src = dados.src || "";
     video.style.display = "block";
+    video.load();
     img.style.display = "none";
+    img.src = "";
+  } else {
+    img.style.display = "none";
+    video.style.display = "none";
   }
 
   titulo.textContent = dados.titulo;
@@ -130,48 +141,39 @@ function atualizarFoto(categoria) {
 mostrarCategoria('encontros');
 
 // === PLAYLIST ===
-const musicas = [
-  { src: "assets/audio/Dancing.mp3", titulo: "Dancing" },
-  { src: "assets/audio/Love never fails.mp3", titulo: "Love never fails" },
-  { src: "assets/audio/Tantos Olhares.mp3", titulo: "Tantos Olhares" }
+const faixas = [
+  "assets/audio/Tantos Olhares.mp3",
+  "assets/audio/Love never fails.mp3",
+  "assets/audio/Dancing.mp3"
 ];
 
-let faixaAtual = 0;
+let indiceMusica = 0;
 const player = document.getElementById("player");
-const tituloMusica = document.getElementById("titulo-musica");
 
-// Inicializa com autoplay em modo mudo para evitar bloqueio
-window.addEventListener("DOMContentLoaded", () => {
-  player.src = musicas[faixaAtual].src;
-  tituloMusica.textContent = musicas[faixaAtual].titulo;
-  player.muted = true;
-  player.play().then(() => {
-    // Desmuta após 1 segundo (melhor se tiver um botão de ativar som)
-    setTimeout(() => {
-      player.muted = false;
-    }, 1000);
-  }).catch((e) => {
-    console.log("Autoplay bloqueado até o usuário interagir.", e);
-  });
-});
-
-player.addEventListener("ended", proximaFaixa);
+function tocarProxima() {
+  indiceMusica = (indiceMusica + 1) % faixas.length;
+  player.src = faixas[indiceMusica];
+  player.play().catch(() => {});
+}
 
 function proximaFaixa() {
-  faixaAtual = (faixaAtual + 1) % musicas.length;
-  player.src = musicas[faixaAtual].src;
-  tituloMusica.textContent = musicas[faixaAtual].titulo;
-  player.play();
+  tocarProxima();
 }
 
 function faixaAnterior() {
-  faixaAtual = (faixaAtual - 1 + musicas.length) % musicas.length;
-  player.src = musicas[faixaAtual].src;
-  tituloMusica.textContent = musicas[faixaAtual].titulo;
-  player.play();
+  indiceMusica = (indiceMusica - 1 + faixas.length) % faixas.length;
+  player.src = faixas[indiceMusica];
+  player.play().catch(() => {});
 }
 
-// Tocar automaticamente ao carregar
-window.addEventListener("DOMContentLoaded", () => {
-  tocarMusica(faixaAtual);
+// Inicializa primeira faixa
+player.src = faixas[indiceMusica];
+player.play().catch(() => {});
+
+// Avança para próxima automaticamente
+player.addEventListener("ended", tocarProxima);
+
+// Tenta ativar som automaticamente (em alguns navegadores móveis ainda precisa de interação do usuário)
+document.addEventListener('DOMContentLoaded', () => {
+  player.play().catch(() => {});
 });
