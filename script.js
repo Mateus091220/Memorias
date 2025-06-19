@@ -72,13 +72,13 @@ const fotos = {
     },
       {
         tipo: "imagem",
-      src: "assets/video/v2.mp4",
+      src: "assets/img/casasogro.jpg",
       titulo:"A benção dos Pais",
       texto: "Havia mais uma coisa a ser feita: era hora de anunciar aos seus pais o nosso relacionamento. Era um domingo, dia 23/06/2024, por volta das 12h. Eu estava bem nervoso, afinal, você é filha de pastores, e novamente fui surpreendido positivamente. Não esperava uma recepção tão incrível. Fui abraçado, acolhido e cuidado pela sua família."
       },
       {
       tipo: "Video",
-      src: "assets/video/v2.mp4",
+      src: "assets/video/hoje.mp4",
       titulo:"Nós Hoje",
       texto: "Vivemos muitas coisas desde o dia 22/06/2024. Comecei a ver as coisas pela sua ótica, tive experiências que nunca imaginei viver, conheci novos lugares, provei comidas diferentes e conheci uma nova família que, desde o primeiro dia, tem torcido por nós. Choramos juntos, rimos, dançamos, fofocamos bastante (rsrsrs). Descobrimos os gostos um do outro. Creio que viveremos coisas ainda mais incríveis nos próximos anos, te tendo não apenas como minha namorada, mas como minha esposa. Te amo!"
     }
