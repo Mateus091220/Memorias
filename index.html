@@ -12,7 +12,7 @@
   <!-- SEÇÃO HERO -->
   <section class="hero">
     <video autoplay muted loop playsinline class="video-bg">
-      <source src="assets/videohorizontal.mp4" type="video/mp4" />
+      <source src="assets/video horizontal.mp4" type="video/mp4" />
       Seu navegador não suporta vídeo HTML5.
     </video>
 
@@ -46,8 +46,9 @@
         </div>
       </div>
       <div class="botoes-navegacao">
-        <button onclick="mudarFoto('encontros', -1)">&#10094;</button>
-        <button onclick="mudarFoto('encontros', 1)">&#10095;</button>
+          <button onclick="mudarFoto('encontros', -1)" aria-label="Anterior">&#10094;</button>
+          <button onclick="mudarFoto('encontros', 1)" aria-label="Próximo">&#10095;</button>
+        </div>
       </div>
     </div>
 
@@ -62,8 +63,9 @@
         </div>
       </div>
       <div class="botoes-navegacao">
-        <button onclick="mudarFoto('viagens', -1)">&#10094;</button>
-        <button onclick="mudarFoto('viagens', 1)">&#10095;</button>
+          <button onclick="mudarFoto('viagens', -1)" aria-label="Anterior">&#10094;</button>
+          <button onclick="mudarFoto('viagens', 1)" aria-label="Próximo">&#10095;</button>
+        </div>
       </div>
     </div>
 
@@ -78,8 +80,9 @@
         </div>
       </div>
       <div class="botoes-navegacao">
-        <button onclick="mudarFoto('momentos', -1)">&#10094;</button>
-        <button onclick="mudarFoto('momentos', 1)">&#10095;</button>
+          <button onclick="mudarFoto('momentos', -1)" aria-label="Anterior">&#10094;</button>
+          <button onclick="mudarFoto('momentos', 1)" aria-label="Próximo">&#10095;</button>
+        </div>
       </div>
     </div>
   </section>
@@ -89,10 +92,10 @@
   <h3 id="titulo-musica">Carregando música...</h3>
   <audio id="player" controls></audio>
   <div class="botoes-musica">
-    <button onclick="faixaAnterior()">&#9664;</button>
-    <button onclick="proximaFaixa()">&#9654;</button>
-  </div>
-</aside>
+    <button onclick="faixaAnterior()" aria-label="Faixa Anterior">&#9664;</button>
+      <button onclick="proximaFaixa()" aria-label="Próxima Faixa">&#9654;</button>
+    </div>
+  </aside>
 
   <!-- SCRIPT EXTERNO -->
   <script src="script.js"></script>
