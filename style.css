@@ -149,38 +149,44 @@ body {
   color: #ddd;
 }
 
-/* SETAS DE NAVEGAÇÃO FIXAS NO CARD */
-.botoes-navegacao {
-  position: absolute;
-  bottom: 20px;
+/* SETAS DE NAVEGAÇÃO FIXAS NA PARTE INFERIOR */
+.navegacao-fixa {
+  position: fixed;
+  bottom: 0;
   left: 0;
   width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-  z-index: 10;
+  justify-content: space-around;
+  z-index: 1000;
 }
 
-.botoes-navegacao button {
+.navegacao-fixa button {
   background: rgba(0, 0, 0, 0.5);
   border: none;
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
-  padding: 10px 15px;
+  padding: 12px 20px;
   border-radius: 8px;
   transition: 0.3s ease;
 }
 
-.botoes-navegacao button:hover {
+.navegacao-fixa button:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color: #f00;
+}
+
+/* REMOVER SETAS DO CARD EM MOBILE */
+.botoes-navegacao {
+  display: none; /* Remove as setas originais do card */
 }
 
 /* PLAYLIST */
 .playlist-flutuante {
   position: fixed;
-  bottom: 0;
+  bottom: 60px; /* Ajustado para não sobrepor a navegação fixa */
   left: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.3);
@@ -188,7 +194,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 999;
 }
 
 .playlist-flutuante audio {
@@ -224,9 +230,9 @@ body {
     padding: 15px;
   }
 
-  .botoes-navegacao button {
-    font-size: 1.8rem;
-    padding: 8px 12px;
+  .navegacao-fixa button {
+    font-size: 1.6rem;
+    padding: 10px 15px;
   }
 
   .contador {

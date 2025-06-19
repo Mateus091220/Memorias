@@ -45,11 +45,6 @@
           <p id="descricao-encontros"></p>
         </div>
       </div>
-      <div class="botoes-navegacao">
-          <button onclick="mudarFoto('encontros', -1)">&#10094;</button>
-          <button onclick="mudarFoto('encontros', 1)">&#10095;</button>
-        </div>
-      </div>
     </div>
 
     <!-- VIAGENS -->
@@ -60,11 +55,6 @@
         <div class="categoria-descricao">
           <h3 id="titulo-viagens"></h3>
           <p id="descricao-viagens"></p>
-        </div>
-      </div>
-      <div class="botoes-navegacao">
-          <button onclick="mudarFoto('viagens', -1)">&#10094;</button>
-          <button onclick="mudarFoto('viagens', 1)">&#10095;</button>
         </div>
       </div>
     </div>
@@ -79,23 +69,24 @@
           <p id="descricao-momentos"></p>
         </div>
       </div>
-      <div class="botoes-navegacao">
-          <button onclick="mudarFoto('momentos', -1)">&#10094;</button>
-          <button onclick="mudarFoto('momentos', 1)">&#10095;</button>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- PLAYLIST FIXA NO RODAPÉ -->
-<aside class="playlist-flutuante">
-  <h3 id="titulo-musica">Carregando música...</h3>
-  <audio id="player" controls></audio>
-  <div class="botoes-musica">
-    <button onclick="faixaAnterior()" aria-label="Faixa Anterior">&#9664;</button>
-    <button onclick="proximaFaixa()" aria-label="Próxima Faixa">&#9654;</button>
+  <!-- NOVA BARRA DE NAVEGAÇÃO FIXA -->
+  <div class="navegacao-fixa">
+    <button onclick="mudarFoto('encontros', -1)" aria-label="Foto anterior">❮</button>
+    <button onclick="mudarFoto('encontros', 1)" aria-label="Próxima foto">❯</button>
   </div>
-</aside>
+
+  <!-- PLAYLIST FIXA NO RODAPÉ -->
+  <aside class="playlist-flutuante">
+    <h3 id="titulo-musica">Carregando música...</h3>
+    <audio id="player" controls></audio>
+    <div class="botoes-musica">
+      <button onclick="faixaAnterior()" aria-label="Faixa Anterior">◀</button>
+      <button onclick="proximaFaixa()" aria-label="Próxima Faixa">▶</button>
+    </div>
+  </aside>
 
   <!-- SCRIPT EXTERNO -->
   <script src="script.js"></script>
