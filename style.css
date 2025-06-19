@@ -63,9 +63,10 @@ body {
 
 /* CATEGORIAS */
 .categorias {
-  padding: 60px 20px;
+  padding: 100px 20px 60px 20px; /* Mantém o padding-top para dar espaço à playlist */
   max-width: 1000px;
   margin: 0 auto;
+  position: relative; /* Necessário para que .playlist-flutuante seja posicionada em relação a .categorias */
 }
 
 .categorias h2 {
@@ -159,7 +160,9 @@ body {
   padding: 10px 20px;
   display: flex;
   justify-content: space-around;
-  z-index: 1000;
+  z-index: 1001; /* Prioridade maior que a playlist */
+  height: 60px; /* Altura fixa para controle */
+  box-sizing: border-box;
 }
 
 .navegacao-fixa button {
@@ -186,20 +189,21 @@ body {
 /* PLAYLIST */
 .playlist-flutuante {
   position: fixed;
-  bottom: 60px; /* Ajustado para não sobrepor a navegação fixa */
-  left: 0;
-  width: 100%;
+  top: 0; /* Fixa no topo da página */
+  left: 50%;
+  transform: translateX(-50%); /* Centraliza horizontalmente */
+  width: 300px; /* Largura fixa para controle */
   background: rgba(0, 0, 0, 0.3);
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 1000; /* Menor que o z-index da navegacao-fixa */
 }
 
 .playlist-flutuante audio {
-  width: 90%;
-  max-width: 400px;
+  width: 100%; /* Ocupa toda a largura do contêiner */
+  max-width: 300px; /* Limita a largura máxima */
   opacity: 0.7;
   transition: opacity 0.3s ease;
 }
@@ -211,7 +215,6 @@ body {
 #titulo-musica {
   display: none;
 }
-
 /* ANIMAÇÃO */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -247,6 +250,15 @@ body {
   .botoes-categorias button {
     padding: 8px 14px;
     font-size: 0.9rem;
+  }
+
+  .playlist-flutuante {
+    top: 0; /* Mantém fixa no topo em mobile */
+    width: 250px;
+  }
+
+  .categorias {
+    padding: 90px 20px 60px 20px; /* Ajuste do padding-top em mobile */
   }
 
   .playlist-flutuante audio {

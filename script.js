@@ -91,12 +91,23 @@ let indiceAtual = {
   momentos: 0
 };
 
+let categoriaAtiva = 'encontros'; // Estado da categoria ativa
+
 function mostrarCategoria(id) {
   document.querySelectorAll(".conteudo-categoria").forEach(div => {
     div.style.display = "none";
   });
   document.getElementById(id).style.display = "flex";
-  atualizarFoto(id);
+  categoriaAtiva = id; // Atualiza a categoria ativa
+  atualizarFoto(id); // Atualiza o conteúdo da categoria selecionada
+}
+
+function mudarFotoProxima() {
+  mudarFoto(categoriaAtiva, 1);
+}
+
+function mudarFotoAnterior() {
+  mudarFoto(categoriaAtiva, -1);
 }
 
 function mudarFoto(categoria, direcao) {
@@ -173,7 +184,14 @@ player.play().catch(() => {});
 // Avança para próxima automaticamente
 player.addEventListener("ended", tocarProxima);
 
-// Tenta ativar som automaticamente (em alguns navegadores móveis ainda precisa de interação do usuário)
-document.addEventListener('DOMContentLoaded', () => {
-  player.play().catch(() => {});
+// Tenta ativar som automaticamente
+document.addEventListener('DOMContentLoaded', function() {
+  const audio = document.getElementById('player');
+  if (audio) {
+    audio.play().then(() => {
+      audio.muted = false; // Remove muted após iniciar
+    }).catch(error => {
+      console.log('Autoplay bloqueado pelo navegador:', error);
+    });
+  }
 });

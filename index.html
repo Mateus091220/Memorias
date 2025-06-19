@@ -74,14 +74,17 @@
 
   <!-- NOVA BARRA DE NAVEGAÇÃO FIXA -->
   <div class="navegacao-fixa">
-    <button onclick="mudarFoto('encontros', -1)" aria-label="Foto anterior">❮</button>
-    <button onclick="mudarFoto('encontros', 1)" aria-label="Próxima foto">❯</button>
+    <button onclick="mudarFotoAnterior()" aria-label="Foto anterior">❮</button>
+    <button onclick="mudarFotoProxima()" aria-label="Próxima foto">❯</button>
   </div>
 
   <!-- PLAYLIST FIXA NO RODAPÉ -->
   <aside class="playlist-flutuante">
     <h3 id="titulo-musica">Carregando música...</h3>
-    <audio id="player" controls></audio>
+    <audio id="player" controls autoplay muted>
+      <source src="caminho/para/sua/musica.mp3" type="audio/mp3" />
+      Seu navegador não suporta áudio HTML5.
+    </audio>
     <div class="botoes-musica">
       <button onclick="faixaAnterior()" aria-label="Faixa Anterior">◀</button>
       <button onclick="proximaFaixa()" aria-label="Próxima Faixa">▶</button>
