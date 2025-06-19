@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nossa História</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- SEÇÃO HERO -->
+  <section class="hero">
+    <video autoplay muted loop playsinline class="video-bg">
+      <source src="https://drive.google.com/uc?export=download&id=13Dw5i-ZsGBF5RijR5B3skdyfglPbilAG" type="video/mp4" />
+      Seu navegador não suporta vídeo HTML5.
+    </video>
+
+    <div class="overlay">
+      <h1 class="titulo">Nossa História</h1>
+      <div class="contador">
+        <h2>Juntos há</h2>
+        <div id="timer"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO CATEGORIAS -->
+  <section class="categorias">
+    <h2>Nossa Jornada</h2>
+
+    <div class="botoes-categorias">
+      <button onclick="mostrarCategoria('encontros')">Encontros</button>
+      <button onclick="mostrarCategoria('viagens')">Viagens</button>
+      <button onclick="mostrarCategoria('momentos')">Momentos Marcantes</button>
+    </div>
+
+    <!-- ENCONTROS -->
+    <div id="encontros" class="conteudo-categoria">
+      <div class="categoria-card">
+        <img id="img-encontros" />
+        <video id="video-encontros" controls style="display:none;"></video>
+        <div class="categoria-descricao">
+          <h3 id="titulo-encontros"></h3>
+          <p id="descricao-encontros"></p>
+        </div>
+      </div>
+      <div class="botoes-navegacao">
+        <button onclick="mudarFoto('encontros', -1)">&#10094;</button>
+        <button onclick="mudarFoto('encontros', 1)">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- VIAGENS -->
+    <div id="viagens" class="conteudo-categoria">
+      <div class="categoria-card">
+        <img id="img-viagens" />
+        <video id="video-viagens" controls style="display:none;"></video>
+        <div class="categoria-descricao">
+          <h3 id="titulo-viagens"></h3>
+          <p id="descricao-viagens"></p>
+        </div>
+      </div>
+      <div class="botoes-navegacao">
+        <button onclick="mudarFoto('viagens', -1)">&#10094;</button>
+        <button onclick="mudarFoto('viagens', 1)">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- MOMENTOS -->
+    <div id="momentos" class="conteudo-categoria">
+      <div class="categoria-card">
+        <img id="img-momentos" />
+        <video id="video-momentos" controls style="display:none;"></video>
+        <div class="categoria-descricao">
+          <h3 id="titulo-momentos"></h3>
+          <p id="descricao-momentos"></p>
+        </div>
+      </div>
+      <div class="botoes-navegacao">
+        <button onclick="mudarFoto('momentos', -1)">&#10094;</button>
+        <button onclick="mudarFoto('momentos', 1)">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAYLIST FLUTUANTE -->
+<aside class="playlist-flutuante">
+  <h3 id="titulo-musica">Carregando música...</h3>
+  <audio id="player" controls></audio>
+  <div class="botoes-musica">
+    <button onclick="faixaAnterior()">&#9664;</button>
+    <button onclick="proximaFaixa()">&#9654;</button>
+  </div>
+</aside>
+
+  <!-- SCRIPT EXTERNO -->
+  <script src="script.js"></script>
+
+</body>
+</html>
